@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php ob_start(); ?>
+<?php include ("database.php"); ?>
 <head>
 
     <meta charset="utf-8">

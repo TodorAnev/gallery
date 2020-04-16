@@ -1,8 +1,8 @@
 <?php include("includes/header.php"); ?>
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <?php include("includes/nav_top.php") ?>
-    <?php include("includes/nav_side.php") ?>
+    <?php include("includes/nav_top.php"); ?>
+    <?php include("includes/nav_side.php"); ?>
 </nav>
 
 <div id="page-wrapper">

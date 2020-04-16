@@ -1,0 +1,71 @@
+<?php 
+
+require_once("configuration.php");
+
+class Database {
+
+
+	public $connection;
+	function __construct(){ // gets each time when an instance is created
+		$this->open_db_connection();
+	}
+
+
+	public function open_db_connection(){
+		$this->connection = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME); # this ia an object we apply the property to connection
+		($this->connection->connect_errno) ? die("Database connection failed" . $this->connection->connect_error) : ""; 
+	}
+
+
+	public function query($sql){
+		$result = $this->connection->query($sql);
+		$this->confirmQuery($result);
+		if(!$result){die("Query failed");}
+		return $result;
+	}
+
+
+	private function confirmQuery($result){ # we won't use it outside the class
+		if(!$result){die("Query failed" . $this->connection->error);}
+	}
+
+
+	public function p_statement($query_string = "", $type = "", $vars = []) {
+	$query = $this->connection->prepare($query_string); // Object style
+    // $query = mysqli_prepare($this->connection, $query_string); // Procedural style
+    //assign $type to first index of $vars
+    array_unshift($vars, $type);
+
+    //Turn all values into reference since call_user_func_array
+    //expects arguments of bind_param to be references
+    //@see mysqli::bind_param() manpage
+    foreach ($vars as $key => $value) {
+        $vars[$key] =& $vars[$key];
+    }
+
+    call_user_func_array(array($query, 'bind_param'), $vars);
+    $this->confirmQuery($result);
+    $query->execute();
+
+    // INSERT, SELECT, UPDATE and DELETE have each 6 chars, you can
+    // validate it using substr() below for better and faster performance
+    if (strtolower(substr($query_string, 0, 6)) == "select") {
+        $result = $query->get_result();
+    } else {
+        $result = $query->affected_rows;
+    }
+
+    $query->close();
+    return $result;
+	}
+
+	// not sure what this method does, remove it if it is not used
+	public function the_insert_id(){
+		return $this->connection->insert_id;
+	}
+
+}
+
+$database = new Database();
+
+ ?>
