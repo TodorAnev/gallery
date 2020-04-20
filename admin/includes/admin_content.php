@@ -9,13 +9,26 @@
             </h1>
             <?php 
 
+            // testing
+            // $result = User::find_all_users();
+            // while($row = mysqli_fetch_array($result)){
+            //     echo $row['u_username'] . "<br>";
 
-            $sql = "SELECT * FROM tbl_users";
-            $result = $database->query($sql);
-            $user_found = mysqli_fetch_array($result);
-            echo $user_found['u_username'];
+            // }
 
+            // $u_found = User::find_user_by_id(3);
+            // $user = User::instantiate($u_found);
 
+            // echo $user->l_name . "<br>";
+
+            $users = User::find_all_users();
+
+            foreach ($users as $user) {
+                echo $user->f_name . "<br>";
+            }
+
+            $u_found = User::find_user_by_id(1);
+            echo $u_found->u_username;
 
              ?>
             <ol class="breadcrumb">

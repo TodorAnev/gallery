@@ -1,8 +1,8 @@
-<?php include("includes/header.php"); ?>
+<?php include_once("includes/header.php"); ?>
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <?php include("includes/nav_top.php"); ?>
-    <?php include("includes/nav_side.php"); ?>
+    <?php include_once("includes/nav_top.php"); ?>
+    <?php include_once("includes/nav_side.php"); ?>
 </nav>
 
 <div id="page-wrapper">
@@ -35,4 +35,4 @@
 </div>
 <!-- /#page-wrapper -->
 
-<?php include("includes/footer.php"); ?>
+<?php include_once("includes/footer.php"); ?>
