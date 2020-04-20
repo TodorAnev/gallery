@@ -35,6 +35,16 @@ class User
 		return $object_array; // here is an array of objects that we foreach and we can get each username with $user->f_name
 	}
 
+	public static function verify_user($u_username,$u_password){ // User Input
+		global $database;
+		$u_username = $database->escape_string($u_username); 
+		$u_password = $database->escape_string($u_password);
+		$query = "SELECT * FROM tbl_users WHERE u_username = '$u_username' AND u_password = '$u_password' LIMIT 1";
+		//$query = $database->p_statement("SELECT * FROM tbl_users WHERE u_username=? AND u_password=? LIMIT 1", "ss", [$u_username,$u_password]);
+		$result = self::find_this_query($query);
+		return !empty($result) ? array_shift($result) : false; //array_shift grabs the first item of the array and returns it
+	}
+
 	public static function instantiate($u_found){ // create array into object
 	    $object = new self();
 

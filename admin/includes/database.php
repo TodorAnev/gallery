@@ -20,7 +20,7 @@ class Database {
 	public function query($sql){
 		$result = $this->connection->query($sql);
 		$this->confirmQuery($result);
-		if(!$result){die("Query failed");}
+		if(!$result){die("Query failed" . $this->connection->error);}
 		return $result;
 	}
 
@@ -29,10 +29,13 @@ class Database {
 		if(!$result){die("Query failed" . $this->connection->error);}
 	}
 
+	public function escape_string($string){
+		return mysqli_real_escape_string($this->connection,$string);
+	}
 
 	public function p_statement($query_string = "", $type = "", $vars = []) {
-	$query = $this->connection->prepare($query_string); // Object style
-    // $query = mysqli_prepare($this->connection, $query_string); // Procedural style
+	$prepare_query = $this->connection->prepare($query_string); // Object style
+    //$prepare_query = mysqli_prepare($this->connection, $query_string); // Procedural style
     //assign $type to first index of $vars
     array_unshift($vars, $type);
 
@@ -43,19 +46,19 @@ class Database {
         $vars[$key] =& $vars[$key];
     }
 
-    call_user_func_array(array($query, 'bind_param'), $vars);
-    $this->confirmQuery($result);
-    $query->execute();
+    call_user_func_array(array($prepare_query, 'bind_param'), $vars);
+    $this->confirmQuery($prepare_query);
+    $prepare_query->execute();
 
     // INSERT, SELECT, UPDATE and DELETE have each 6 chars, you can
     // validate it using substr() below for better and faster performance
     if (strtolower(substr($query_string, 0, 6)) == "select") {
-        $result = $query->get_result();
+        $result = $prepare_query->get_result();
     } else {
-        $result = $query->affected_rows;
+        $result = $prepare_query->affected_rows;
     }
 
-    $query->close();
+    $prepare_query->close();
     return $result;
 	}
 

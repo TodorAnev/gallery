@@ -8,28 +8,9 @@
                 <small>Subheading</small>
             </h1>
             <?php 
-
-            // testing
-            // $result = User::find_all_users();
-            // while($row = mysqli_fetch_array($result)){
-            //     echo $row['u_username'] . "<br>";
-
-            // }
-
-            // $u_found = User::find_user_by_id(3);
-            // $user = User::instantiate($u_found);
-
-            // echo $user->l_name . "<br>";
-
-            $users = User::find_all_users();
-
-            foreach ($users as $user) {
-                echo $user->f_name . "<br>";
-            }
-
-            $u_found = User::find_user_by_id(1);
-            echo $u_found->u_username;
-
+            echo $session->u_id . "<br>";
+            echo $_SESSION['u_id']. "<br>";
+            echo $_SESSION['u_username'];
              ?>
             <ol class="breadcrumb">
                 <li>

@@ -1,4 +1,6 @@
-<?php include_once("includes/header.php"); ?>
+<?php include_once("includes/header.php"); 
+      if(!$session->is_signed_in()){redirect("login.php");} 
+?>
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <?php include_once("includes/nav_top.php"); ?>

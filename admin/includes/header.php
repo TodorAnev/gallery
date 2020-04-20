@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php ob_start(); ?>
-<?php include ("init.php"); ?>
+<?php ob_start(); 
+     require_once("init.php"); 
+     // if(!$session->is_signed_in()){redirect("login.php");} 
+?>
 <head>
 
     <meta charset="utf-8">
