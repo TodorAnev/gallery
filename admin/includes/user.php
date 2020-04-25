@@ -7,6 +7,8 @@
 class User 
 {
 
+	protected static $db_table = "tbl_users";
+	protected static $db_table_fields = array('u_username','u_password','f_name','l_name');
 	public $id;
 	public $u_username;
 	public $u_password;
@@ -62,10 +64,71 @@ class User
     	$object_properties = get_object_vars($this); // returns all class properties
     	return array_key_exists($attribute, $object_properties); // compareres the field returned from the database($attribute) to the public varaibles in the class
     }
-}
 
+    protected function properties(){
+    	$properties = array();
+    	foreach (self::$db_table_fields as $db_field) { 
+    		if(property_exists($this, $db_field)){
+    			$properties[$db_field] = $this->$db_field;
+    		}
+    	}
+    	return $properties; // this is what this returns : Array ( [u_username] => Pesho [u_password] => gesho [f_name] => mesho [l_name] => bakshesho )
+    }
 
+    protected function clean_properties(){
+    	global $database;
+    	$clean_properties = array();
+    	foreach ($this->properties() as $key => $value) {
+    		$clean_properties[$key] = $database->escape_string($value); // same thing as $properties, but cleaned
+    	}
+    	return $clean_properties;
+    }
 
+    public function create(){
+	global $database;
+	$properties = $this->clean_properties();// returns all object properties
+	$sql = "INSERT INTO " .self::$db_table. "(" . implode(",", array_keys($properties)) . ")"; // 1st paramater devides they keys from array_keys($properties)
+	//imploding - separating each value with a comma and we use array_keys to pull out the keys of the array(u_username, u_password, f_name.......)
+	$sql .= "VALUES ('". implode("','", array_values($properties)) ."')";
+	if($database->query($sql)){
+		$this->id = $database->insert_id(); // pulling the id of the last query
+		return true;
+	} else {
+		return false;
+	}
+	
+	}
+
+	public function update(){
+	global $database;
+
+	$properties = $this->clean_properties();
+	$properties_pairs = array();
+	foreach ($properties as $key => $value) {
+		$properties_pairs[] = "{$key}='{$value}'";
+	}
+	$sql = "UPDATE " .self::$db_table. " SET ";
+	$sql .= implode(", ", $properties_pairs); // final result:Array ( [0] => u_username='Pesho' [1] => u_password='gesho' [2] => f_name='mesho' [3] => l_name='bakshesho' ) from this:
+	//$sql .= "u_username= '" . $database->escape_string($this->u_username) . "', ";
+	$sql .= " WHERE id= " . $database->escape_string($this->id);
+	$database->query($sql);
+
+	return (mysqli_affected_rows($database->connection) == 1) ? true : false;
+	}
+
+	public function save(){
+    	return isset($this->id) ? $this->update() : $this->create(); // if the id is here we want to update and if it is not we update
+    }
+
+	public function delete(){
+	global $database;
+	$sql = "DELETE FROM  " .self::$db_table. " ";
+	$sql .= " WHERE id= " . $database->escape_string($this->id);
+	$sql .= " LIMIT 1"; // security, it is sure that we delete only 1
+	$database->query($sql);
+	return (mysqli_affected_rows($database->connection) == 1) ? true : false;
+	}
+} // End of Class User
 
 
  ?>
