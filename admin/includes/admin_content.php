@@ -8,37 +8,26 @@
                 <small>Subheading</small>
             </h1>
             <?php 
-            // echo $session->u_id . "<br>";
-            // echo $_SESSION['u_id']. "<br>";
-            // echo $_SESSION['u_username'];
 
-            // $user = new User;
-            // $user->u_username = 'rico';
-            // $user->u_password = 'suave';
-            // $user->f_name = 'pesho';
-            // $user->l_name = 'ivanov';
-            // $user->save();
+            // $photos = Photo::find_all();
+            // foreach ($photos as $photo) {
+            //     echo $photo->p_title . "<br>";
+            // }
 
-            // $user = User::find_user_by_id(4);
-            // $user->u_username = 'Saver';
-            // $user->u_password = 'save her';
-            // $user->save();
+            $photo1 = Photo::find_by_id(1);
+            echo $photo1->p_title . "<br>";
 
-            // $user = User::find_user_by_id(7);
-            // $user->f_name = 'Unhappy';
-            // $user->l_name = 'Very Unhappy';
-            // $user->save();
+            // $photo2 = Photo::find_by_query("SELECT p_title FROM tbl_photos WHERE id=1");
+            // print_r($photo2);
 
-            // $user1 = new User;
-            // $user1->u_username = 'New Method 2';
-            // $user1->save();
+            // $photo = new Photo();
+            // $photo->id = 1;
+            // $photo->p_title = 'My favourite photo';
+            // $photo->p_type = 'png';
+            // $photo->save();
 
-            // $user35 = new User;
-            // $user35->u_username = 'edwin';
-            // $user35->u_password = 'diaz';
-            // $user35->f_name = 'my';
-            // $user35->l_name = 'fav';
-            // $user35->save();
+            // echo INCLUDES_PATH;
+            // echo SITE_ROOT;
 
              ?>
             <ol class="breadcrumb">
