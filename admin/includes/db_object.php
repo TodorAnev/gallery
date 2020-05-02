@@ -7,9 +7,9 @@ class Db_object
 
 	}
 
-	public static function find_by_id($u_id){
+	public static function find_by_id($id){
 
-		$result = static::find_by_query("SELECT * FROM ".static::$db_table." WHERE id = ".$u_id." LIMIT 1");
+		$result = static::find_by_query("SELECT * FROM ".static::$db_table." WHERE id = ".$id." LIMIT 1");
 
 		return !empty($result) ? array_shift($result) : false; // array_shift grabs the first item of the array and returns it
 	}
@@ -24,16 +24,16 @@ class Db_object
 		return $object_array; // here is an array of objects that we foreach and we can get each username with $user->f_name
 	}
 
-	public static function instantiate($u_found){ // create array into object
+	public static function instantiate($found){ // create array into object
 		$calling_class = get_called_class();
 	    $object = new $calling_class();
 
-	    //$object->id = $u_found['u_username'] - this is what we do dynamically here
+	    //$object->id = $found['u_username'] - this is what we do dynamically here
 
-	    foreach ($u_found as $attribute => $value) { //$u_found = full return of the DB  $attribute == KEY of $u_found that is returned from the DB(u_username,u_password.....) $value = actual username and password
+	    foreach ($found as $attribute => $value) { //$found = full return of the DB  $attribute == KEY of $found that is returned from the DB(u_username,u_password.....) $value = actual username and password
 	    	if($object->has_attribute($attribute)){ // the object must have that property from the database so we check for it
 	    		$object->$attribute = $value; // and then we assign the object attribute to the value
-	    	}//$attribute == $u_found and $value == ['u_username']
+	    	}//$attribute == $found and $value == ['u_username']
 	    }
         return $object;
     }

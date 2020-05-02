@@ -9,13 +9,15 @@
             </h1>
             <?php 
 
+            $user = User::find_by_id(4);
+            echo $user->u_username;
             // $photos = Photo::find_all();
             // foreach ($photos as $photo) {
             //     echo $photo->p_title . "<br>";
             // }
 
-            $photo1 = Photo::find_by_id(1);
-            echo $photo1->p_title . "<br>";
+            // $photo1 = Photo::find_by_id(19);
+            // echo $photo1->p_title . "<br>";
 
             // $photo2 = Photo::find_by_query("SELECT p_title FROM tbl_photos WHERE id=1");
             // print_r($photo2);

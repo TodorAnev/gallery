@@ -3,7 +3,7 @@
 
 if(isset($_POST['submit'])){
 echo "<pre>";
-print_r($_FILES['file_upload']);
+print_r($_FILES['file_upload']['tmp_name']);
 echo "<pre>";
 // echo $the_error = $_FILES['file_upload']['error'] . "<br>";
 

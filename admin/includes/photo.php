@@ -4,7 +4,7 @@ class Photo extends Db_object
 {
 	
 	protected static $db_table = "tbl_photos";
-	protected static $db_table_fields = array('p_title','p_description','p_filename','p_type','p_size');
+	protected static $db_table_fields = array('id','p_title','p_description','p_filename','p_type','p_size');
 	public $id;
 	public $p_title;
 	public $p_description;
@@ -77,6 +77,15 @@ class Photo extends Db_object
 				$this->errors[] = "The folder probably doesn't have permissions";
 				return false;
 			}
+		}
+	}
+
+	public function delete_photo(){ 
+		if($this->delete()){
+			$target_path = SITE_ROOT . DS . 'admin' . DS . $this->picture_path();
+			return unlink($target_path) ? true : false;
+		} else {
+			return false;
 		}
 	}
 }
