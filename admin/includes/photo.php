@@ -62,7 +62,6 @@ class Photo extends Db_object
 			}
 			// building target path
 			$target_path = SITE_ROOT . DS . 'admin' . DS . $this->upload_directory . DS . $this->p_filename; //filename = example.jpg
-			echo $target_path;
 			// making sure we don't have the same file in our system
 			if(file_exists($target_path)){
 				$this->errors[] = "The file $this->p_filename already exists";
