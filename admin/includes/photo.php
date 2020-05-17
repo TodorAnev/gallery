@@ -4,13 +4,15 @@ class Photo extends Db_object
 {
 	
 	protected static $db_table = "tbl_photos";
-	protected static $db_table_fields = array('id','p_title','p_description','p_filename','p_type','p_size');
+	protected static $db_table_fields = array('id','p_title','p_description','p_filename','p_type','p_size','p_alternate_text','p_caption');
 	public $id;
 	public $p_title;
 	public $p_description;
 	public $p_filename;
 	public $p_type;
 	public $p_size;
+	public $p_alternate_text;
+	public $p_caption;
 
 	public $tmp_path; //temporary path for the images, move the pictures to a more permanent place
 	public $upload_directory = "images"; // permanent directory
