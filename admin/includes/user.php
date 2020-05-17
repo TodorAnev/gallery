@@ -13,6 +13,18 @@ class User extends Db_object
 	public $u_image;
 	public $upload_directory = "images";
 	public $image_placeholder = "http://placehold.it/400x400&text=image";
+
+	// public $errors       	 = array(); // we put the errors in here and we display the errors the the user
+	// public $UploadErrors 	 = array(
+ //    0 => 'There is no error, the file uploaded with success',
+ //    1 => 'The uploaded file exceeds the upload_max_filesize directive in php.ini',
+ //    2 => 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form',
+ //    3 => 'The uploaded file was only partially uploaded',
+ //    4 => 'No file was uploaded',
+ //    6 => 'Missing a temporary folder',
+ //    7 => 'Failed to write file to disk.',
+ //    8 => 'A PHP extension stopped the file upload.',
+	// );
 	
 	public function image_placeholder(){
 		return empty($this->u_image) ? $this->image_placeholder : $this->upload_directory . DS . $this->u_image;
@@ -45,10 +57,6 @@ class User extends Db_object
 	}
 
 	public function image_upload(){ // the only time we return true is when we create the file
-		// first we make sure that we don't have the photo, by checking the photo id
-		if($this->id){
-			$this->update();
-		} else {
 			if(!empty($this->errors)){
 				return false;// if our errors array is not empty we return false 
 			}
@@ -65,16 +73,13 @@ class User extends Db_object
 			}
 
 			if(move_uploaded_file($this->tmp_path, $target_path)){
-				if($this->create()){ // if it was able to create it
 					unset($this->tmp_path); // we unset it, because the file has been moved to our desired directory
 					return true;
-				}
 			} else {
 				// if it doesn't work until here , we have problems with permissions
 				$this->errors[] = "The folder probably doesn't have permissions";
 				return false;
 			}
-		}
 	}
 
 

@@ -1,0 +1,3 @@
+1.There are some same methods in user and photo classes, i should find a way to make it one class in db_object.php
+2.When the user is editing his edit_user.php page there should be a confirmation with his current password, and only then he can change any information
+3.When changing user photo it doesn't delete the old user photo

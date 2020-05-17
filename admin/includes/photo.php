@@ -16,17 +16,17 @@ class Photo extends Db_object
 
 	public $tmp_path; //temporary path for the images, move the pictures to a more permanent place
 	public $upload_directory = "images"; // permanent directory
-	public $errors       	 = array(); // we put the errors in here and we display the errors the the user
-	public $UploadErrors 	 = array(
-    0 => 'There is no error, the file uploaded with success',
-    1 => 'The uploaded file exceeds the upload_max_filesize directive in php.ini',
-    2 => 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form',
-    3 => 'The uploaded file was only partially uploaded',
-    4 => 'No file was uploaded',
-    6 => 'Missing a temporary folder',
-    7 => 'Failed to write file to disk.',
-    8 => 'A PHP extension stopped the file upload.',
-	);
+	// public $errors       	 = array(); // we put the errors in here and we display the errors the the user
+	// public $UploadErrors 	 = array(
+ //    0 => 'There is no error, the file uploaded with success',
+ //    1 => 'The uploaded file exceeds the upload_max_filesize directive in php.ini',
+ //    2 => 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form',
+ //    3 => 'The uploaded file was only partially uploaded',
+ //    4 => 'No file was uploaded',
+ //    6 => 'Missing a temporary folder',
+ //    7 => 'Failed to write file to disk.',
+ //    8 => 'A PHP extension stopped the file upload.',
+	// );
 
 	public function set_file($file){ // We pass it $_FILES['uploaded_file'] as an argument
 
