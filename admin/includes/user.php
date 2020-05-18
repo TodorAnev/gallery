@@ -4,7 +4,7 @@ class User extends Db_object
 {
 
 	protected static $db_table = "tbl_users";
-	protected static $db_table_fields = array('u_username','u_password','f_name','l_name','u_image');
+	protected static $db_table_fields = array('id','u_username','u_password','f_name','l_name','u_image');
 	public $id;
 	public $u_username;
 	public $u_password;

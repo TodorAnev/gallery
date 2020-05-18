@@ -1,5 +1,13 @@
 <?php include_once("includes/header.php");
-if(!$session->is_signed_in()){redirect("login.php");} ?>
+if(!$session->is_signed_in()){redirect("login.php");} 
+
+if(empty($_GET['id'])){
+  redirect("photos.php");
+}
+
+$comments = Comment::find_comments($_GET['id']);
+
+?>
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <?php include_once("includes/nav_top.php"); ?>
@@ -28,14 +36,13 @@ if(!$session->is_signed_in()){redirect("login.php");} ?>
                             </tr>
                         </thead>
                         <tbody>
-                                <?php 
-                                $comments = Comment::find_all(); 
+                                <?php  
                                 foreach ($comments as $comment) : ?>
                                       <tr>
                                       <td><?php echo $comment->id; ?></td>
                                       <td><?php echo $comment->c_author; ?>
                                            <div class="action_links">
-                                              <a href="delete_comment.php?id=<?php echo $comment->id; ?>">Delete</a>
+                                              <a href="delete_comment_photo.php?id=<?php echo $comment->id; ?>">Delete</a>
                                           </div>
                                       </td>
                                       <td><?php echo $comment->c_body; ?></td>

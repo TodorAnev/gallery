@@ -45,11 +45,11 @@ if(!$session->is_signed_in()){redirect("login.php");}
                     Edit User
                     <small>Subheading</small>
                 </h1>
-                <div class="form-group">
+                <div class="form-group col-md-offset-3">
                   <img class="thumbnail img-responsive" src="<?php echo $user->image_placeholder(); ?>" alt="">
                 </div>
               <form action="" method="post" enctype="multipart/form-data">
-                <div class="col-md-6">
+                <div class="col-md-6 col-md-offset-3">
                     <div class="form-group">
                       <input type="file" name="u_image">
                     </div>
