@@ -8,6 +8,7 @@ if(empty($_GET['id'])){
 $comments = Comment::find_comments($_GET['id']);
 
 ?>
+
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <?php include_once("includes/nav_top.php"); ?>
@@ -25,7 +26,6 @@ $comments = Comment::find_comments($_GET['id']);
                     comments
                     <small>Subheading</small>
                 </h1>
-                <a class="btn btn-primary" href="add_comment.php">Add comment</a>
                 <div class="col-md-12">
                     <table class="table">
                         <thead>

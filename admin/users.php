@@ -15,7 +15,6 @@ if(!$session->is_signed_in()){redirect("login.php");} ?>
             <div class="col-lg-12">
                 <h1 class="page-header">
                     Users
-                    <small>Subheading</small>
                 </h1>
                 <a class="btn btn-primary" href="add_user.php">Add User</a>
                 <div class="col-md-12">

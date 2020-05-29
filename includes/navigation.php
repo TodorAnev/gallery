@@ -1,7 +1,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">WebSiteName</a>
+          <a class="navbar-brand" href="index.php">Home Page</a>
       </div>
       <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>

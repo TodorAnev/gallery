@@ -14,17 +14,15 @@ if(!$session->is_signed_in()){redirect("login.php");} ?>
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    comments
-                    <small>Subheading</small>
+                    Comments
                 </h1>
-                <a class="btn btn-primary" href="add_comment.php">Add comment</a>
                 <div class="col-md-12">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th>Id</th>
                                 <th>Author</th>
-                                <th>Body</th>
+                                <th>Comment Body</th>
                             </tr>
                         </thead>
                         <tbody>
