@@ -1,4 +1,5 @@
 <?php include_once("includes/header.php");
+include("includes/photo_library_modal.php");
 if(!$session->is_signed_in()){redirect("login.php");} 
 
   if(empty($_GET['id'])){
@@ -28,6 +29,8 @@ if(!$session->is_signed_in()){redirect("login.php");}
 
 
 ?>
+
+
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <?php include_once("includes/nav_top.php"); ?>
@@ -46,7 +49,7 @@ if(!$session->is_signed_in()){redirect("login.php");}
                     <small>Subheading</small>
                 </h1>
                 <div class="form-group col-md-offset-3">
-                  <img class="thumbnail img-responsive" src="<?php echo $user->image_placeholder(); ?>" alt="">
+                  <a href="#" data-toggle="modal" data-target="#photo-library"><img class="thumbnail img-responsive" src="<?php echo $user->image_placeholder(); ?>" alt=""></a>
                 </div>
               <form action="" method="post" enctype="multipart/form-data">
                 <div class="col-md-6 col-md-offset-3">
@@ -71,7 +74,7 @@ if(!$session->is_signed_in()){redirect("login.php");}
                     </div>
                     <div class="form-group">
                       <button class="btn btn-primary" name="update">Update</button>
-                      <a class="btn btn-danger" href="delete_user.php?id=<?php echo $user->id; ?>">Delete</a>
+                      <a id="user-id" class="btn btn-danger" href="delete_user.php?id=<?php echo $user->id; ?>">Delete</a>
 
                     </div>
                 </div>
