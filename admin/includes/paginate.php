@@ -33,8 +33,10 @@ class Paginate {
 
 	public function offset(){
 		return ($this->page - 1) * $this->items_per_page;
+		// (0) * 4 -> starts from 0 1*4 -> starts from 4 and so on 
+		//calculates from which record in the db to start to show the car photos
 		//if items_per_page=10  > 0-10 > 11-21 , skips 10
 	}
 	// offset skips amout of pages you want to skip
 }
- ?>}
+ ?>

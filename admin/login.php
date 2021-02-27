@@ -35,6 +35,7 @@ if(isset($_POST['submit'])){
 <div class="form-group">
 	<label for="username">Username</label>
 	<input type="text" class="form-control" name="u_username" value="<?php echo htmlentities($u_username); ?>" >
+	<!-- htmlentities is used to encode user input on a website so that users cannot insert harmful HTML codes into a site -->
 
 </div>
 

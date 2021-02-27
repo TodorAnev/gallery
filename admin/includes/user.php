@@ -14,18 +14,6 @@ class User extends Db_object
 	public $upload_directory = "images";
 	public $image_placeholder = "http://placehold.it/400x400&text=image";
 
-	// public $errors       	 = array(); // we put the errors in here and we display the errors the the user
-	// public $UploadErrors 	 = array(
- //    0 => 'There is no error, the file uploaded with success',
- //    1 => 'The uploaded file exceeds the upload_max_filesize directive in php.ini',
- //    2 => 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form',
- //    3 => 'The uploaded file was only partially uploaded',
- //    4 => 'No file was uploaded',
- //    6 => 'Missing a temporary folder',
- //    7 => 'Failed to write file to disk.',
- //    8 => 'A PHP extension stopped the file upload.',
-	// );
-	
 	public function image_placeholder(){
 		return empty($this->u_image) ? $this->image_placeholder : $this->upload_directory . DS . $this->u_image;
 	}
@@ -34,8 +22,7 @@ class User extends Db_object
 		global $database;
 		$u_username = $database->escape_string($u_username); 
 		$u_password = $database->escape_string($u_password);
-		$query = "SELECT * FROM " .self::$db_table. " WHERE u_username = '$u_username' AND u_password = '$u_password' LIMIT 1";
-		//$query = $database->p_statement("SELECT * FROM tbl_users WHERE u_username=? AND u_password=? LIMIT 1", "ss", [$u_username,$u_password]);
+		$query = "SELECT * FROM " . self::$db_table . " WHERE u_username = '$u_username' AND u_password = '$u_password' LIMIT 1";
 		$result = self::find_by_query($query);
 		return !empty($result) ? array_shift($result) : false; //array_shift grabs the first item of the array and returns it
 	}

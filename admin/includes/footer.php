@@ -12,7 +12,9 @@
 
 	<!-- Google API -->
     <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
+      $(document).ready(function() {
+    if ($('#piechart').length){
+        google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
 
@@ -35,6 +37,8 @@
 
         chart.draw(data, options);
       }
+    }
+      });
     </script>
 
 </body>

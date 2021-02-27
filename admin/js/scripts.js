@@ -1,4 +1,4 @@
-$(document).ready(function(){
+/*$(document).ready(function(){
 
 	// Custom editor
 	tinymce.init({
@@ -29,7 +29,7 @@ $(document).ready(function(){
 		});
 	});
 	});
-});
+});*/
 
 
 

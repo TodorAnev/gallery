@@ -17,7 +17,7 @@ class Db_object
 	
 	public static function find_all(){
 		return static::find_by_query("SELECT * FROM " .static::$db_table. " "); // late static binding static::
-
+		// A static variable exists only in a local function scope, but it does not lose its value when program execution leaves this scope
 	}
 
 	public static function find_by_id($id){
@@ -32,19 +32,20 @@ class Db_object
 		$result = $database->query($query);
 		$object_array = []; // empty array to put our objects in
 		while($row = mysqli_fetch_array($result)){ // fetch the $result we get from the DB
-			$object_array[] = static::instantiate($row); // we use the instantiate method to loop through the record of the DB. We just put the result of the instantiation into an array		
-		}							// $row = the fetched results
+			// loop each row(all data, all fields) in the database and instantiate
+			$object_array[] = static::instantiate($row); // we use the instantiate method to loop through the record of the DB. We just put the result of the instantiation into an array
+		}	// $row = the fetched results
 		return $object_array; // here is an array of objects that we foreach and we can get each username with $user->f_name
 	}
 
 	public static function instantiate($found){ // create array into object
-		$calling_class = get_called_class();
+		$calling_class = get_called_class(); //"Photo" for example
 	    $object = new $calling_class();
 
 	    //$object->id = $found['u_username'] - this is what we do dynamically here
 
 	    foreach ($found as $attribute => $value) { //$found = full return of the DB  $attribute == KEY of $found that is returned from the DB(u_username,u_password.....) $value = actual username and password
-	    	if($object->has_attribute($attribute)){ // the object must have that property from the database so we check for it
+	    	if($object->has_attribute($attribute)){ // the object(class, thats why we declare db properties in the start of every class) must have that property from the database so we check for it
 	    		$object->$attribute = $value; // and then we assign the object attribute to the value
 	    	}//$attribute == $found and $value == ['u_username']
 	    }
@@ -63,7 +64,7 @@ class Db_object
     			$properties[$db_field] = $this->$db_field;
     		}
     	}
-    	return $properties; // this is what this returns : Array ( [u_username] => Pesho [u_password] => gesho [f_name] => mesho [l_name] => bakshesho )
+    	return $properties; // this is what this returns : Array ( [u_username] => asd [u_password] => asd [f_name] => asd [l_name] => asd )
     }
 
     protected function clean_properties(){
@@ -77,7 +78,7 @@ class Db_object
 
     public function create(){
 	global $database;
-	$properties = $this->clean_properties();// returns all object properties
+	$properties = $this->clean_properties();// cleans the properties before they are inserted into the database returns all object properties
 	$sql = "INSERT INTO " .static::$db_table. "(" . implode(",", array_keys($properties)) . ")"; // 1st paramater devides they keys from array_keys($properties)
 	//imploding - separating each value with a comma and we use array_keys to pull out the keys of the array(u_username, u_password, f_name.......)
 	$sql .= "VALUES ('". implode("','", array_values($properties)) ."')";

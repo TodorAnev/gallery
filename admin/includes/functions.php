@@ -9,6 +9,7 @@ function classAutoLoader($class){
 }
 
 spl_autoload_register('classAutoLoader');
+//spl_autoload_register() allows you to register multiple functions (or static methods from your own Autoload class) that PHP will put into a stack/queue and call sequentially when a "new Class" is declared.
 
  function redirect($location){
 

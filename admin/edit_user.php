@@ -1,5 +1,4 @@
 <?php include_once("includes/header.php");
-include("includes/photo_library_modal.php");
 if(!$session->is_signed_in()){redirect("login.php");} 
 
   if(empty($_GET['id'])){
@@ -49,7 +48,7 @@ if(!$session->is_signed_in()){redirect("login.php");}
                     <small>Subheading</small>
                 </h1>
                 <div class="form-group col-md-offset-3">
-                  <a href="#" data-toggle="modal" data-target="#photo-library"><img class="thumbnail img-responsive" src="<?php echo $user->image_placeholder(); ?>" alt=""></a>
+                  <a href="#" data-toggle="modal" data-target="#"><img class="thumbnail img-responsive" src="<?php echo $user->image_placeholder(); ?>" alt=""></a>
                 </div>
               <form action="" method="post" enctype="multipart/form-data">
                 <div class="col-md-6 col-md-offset-3">
