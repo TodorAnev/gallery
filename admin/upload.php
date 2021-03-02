@@ -4,15 +4,7 @@ $message = "";
 if(isset($_POST['submit'])){
     $photo = new Photo;
     $photo->p_title = $_POST['title'];
-    $photo->set_file($_FILES['file_upload']); // this is what we send to set_file()
-//     Array
-// (
-//     [name] => photo-1523895665936-7bfe172b757d.jpg
-//     [type] => image/jpeg
-//     [tmp_name] => C:\xampp\tmp\phpEE90.tmp
-//     [error] => 0
-//     [size] => 182083
-// )
+    $photo->set_file($_FILES['file_upload']);
     if($photo->save()){ // if we are able to create it
         $message = "Photo uploaded sucessfully";
     } else {

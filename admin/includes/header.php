@@ -26,9 +26,6 @@
     <!-- Non-library CSS -->
     <link rel="stylesheet" href="css/styles.css">
 
-    <!-- Text editor -->
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

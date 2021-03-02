@@ -12,16 +12,9 @@ if(!$session->is_signed_in()){redirect("login.php");}
       $user->u_username = $_POST['u_username'];
       $user->f_name = $_POST['f_name'];
       $user->l_name = $_POST['l_name'];
-      //$user->u_password = $_POST['u_password'];
-      if(empty($_FILES['u_image'])){
-        $user->save();
-      } else {
-        $user->set_file($_FILES['u_image']);
-
-        $user->image_upload(); // checks if user exists and if exists it is gonna update it and if it doesn't it creates it
-        $user->save();
-        redirect("edit_user.php?id=$user->id");
-      }
+      $user->u_password = $_POST['u_password'];
+      $user->save();
+      redirect("edit_user.php?id=$user->id");
 }
   
 }
@@ -47,14 +40,8 @@ if(!$session->is_signed_in()){redirect("login.php");}
                     Edit User
                     <small>Subheading</small>
                 </h1>
-                <div class="form-group col-md-offset-3">
-                  <a href="#" data-toggle="modal" data-target="#"><img class="thumbnail img-responsive" src="<?php echo $user->image_placeholder(); ?>" alt=""></a>
-                </div>
               <form action="" method="post" enctype="multipart/form-data">
                 <div class="col-md-6 col-md-offset-3">
-                    <div class="form-group">
-                      <input type="file" name="u_image">
-                    </div>
                     <div class="form-group">
                       <label for="username">Username</label>
                       <input type="text" name="u_username" class="form-control" value="<?php echo $user->u_username ?>">

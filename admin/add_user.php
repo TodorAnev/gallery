@@ -1,21 +1,33 @@
 <?php include_once("includes/header.php");
 if(!$session->is_signed_in()){redirect("login.php");} 
+$message = "";
 
-
-  $user = new User;
 
   if(isset($_POST['create'])){
-    if($user){
+
+    // Required field names
+    $required = array('u_username', 'f_name', 'l_name', 'u_password');
+    // Loop over field names, make sure each one exists and is not empty
+    $error = false;
+    foreach($required as $field) {
+      if (empty($_POST[$field])) {
+        $error = true;
+      }
+    }
+    if ($error) {
+      $message = "All fields are required.";
+    } else {
+      $user = new User;
+
       $user->u_username = $_POST['u_username'];
       $user->f_name = $_POST['f_name'];
       $user->l_name = $_POST['l_name'];
       $user->u_password = $_POST['u_password'];
 
-      $user->set_file($_FILES['u_image']);
-
-      $user->image_upload();
+      $user->save();
+      $message = "User created sucessfully";
     }
-  
+
 }
 
 
@@ -37,12 +49,9 @@ if(!$session->is_signed_in()){redirect("login.php");}
                     Add User
                     <small>Subheading</small>
                 </h1>
-                <?php  ?>
+                <?php echo $message; ?>
               <form action="" method="post" enctype="multipart/form-data">
                 <div class="col-md-6 col-md-offset-3">
-                    <div class="form-group">
-                      <input type="file" name="u_image">
-                    </div>
                     <div class="form-group">
                       <label for="username">Username</label>
                       <input type="text" name="u_username" class="form-control">
