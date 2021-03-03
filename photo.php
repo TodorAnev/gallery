@@ -29,90 +29,79 @@ $found_comments = Comment::find_comments($photo->id);
 ?>
 
 <div class="row">
-<!-- Blog Post Content Column -->
-<div class="col-lg-12">
+    <!-- Blog Post Content Column -->
+    <div class="col-lg-12">
 
-    <!-- Blog Post -->
+        <!-- Blog Post -->
 
-    <!-- Title -->
-    <h1><?php echo $photo->p_title; ?></h1>
+        <!-- Title -->
+        <h1><?php echo $photo->p_title; ?></h1>
 
-    <!-- Author -->
-    <p class="lead">
-        by <a href="#">Todor Anev</a>
-    </p>
+        <!-- Author -->
+        <p class="lead">
+            by <a href="#">Todor Anev</a>
+        </p>
 
-    <hr>
+        <hr>
 
-    <!-- Date/Time -->
-    <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
+        <!-- Date/Time -->
+        <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
 
-    <hr>
+        <hr>
 
-    <!-- Preview Image -->
-    <img class="img-responsive photo_size" src="admin/<?php echo $photo->picture_path(); ?>" alt="">
+        <!-- Preview Image -->
+        <img class="img-responsive photo_size" src="admin/<?php echo $photo->picture_path(); ?>" alt="">
 
-    <!-- <hr> -->
+        <!-- <hr> -->
 
-    <!-- Post Content -->
-    <p class="lead"><?php echo $photo->p_caption; ?></p>
-    <p><?php echo $photo->p_description; ?></p>
+        <!-- Post Content -->
+        <p class="lead"><?php echo $photo->p_caption; ?></p>
+        <p><?php echo $photo->p_description; ?></p>
 
-    <hr>
+        <hr>
 
-    <!-- Blog Comments -->
+        <!-- Blog Comments -->
 
-    <!-- Comments Form -->
-    <div class="well">
-        <h4>Leave a Comment:</h4>
-        <form role="form" method="post">
-            <div class="form-group">
-                <label for="author">Author</label>
-                <input type="text" name="c_author" class="form-control">
-            </div>
-            <div class="form-group">
-                <textarea name="c_body" class="form-control" rows="3"></textarea>
-            </div>
-            <button name="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </div>
-
-    <hr>
-
-    <!-- Posted Comments -->
-
-    <!-- Comment -->
-
-    <?php foreach ($found_comments as $comment) :  ?>
-        <div class="media">
-            <a class="pull-left" href="#">
-                <img class="media-object" src="http://placehold.it/64x64" alt="">
-            </a>
-            <div class="media-body">
-                <h4 class="media-heading"><?php echo $comment->c_author ?>
-                <small>August 25, 2014 at 9:30 PM</small>
-            </h4>
-            <?php echo $comment->c_body; ?>
+        <!-- Comments Form -->
+        <div class="well">
+            <h4>Leave a Comment:</h4>
+            <form role="form" method="post">
+                <div class="form-group">
+                    <label for="author">Author</label>
+                    <input type="text" name="c_author" class="form-control">
+                </div>
+                <div class="form-group">
+                    <textarea name="c_body" class="form-control" rows="3"></textarea>
+                </div>
+                <button name="submit" class="btn btn-primary">Submit</button>
+            </form>
         </div>
-    </div>
-<?php endforeach; ?> 
+
+        <hr>
+
+        <!-- Posted Comments -->
+
+        <!-- Comment -->
+
+        <?php foreach ($found_comments as $comment) :  ?>
+            <div class="media">
+                <a class="pull-left" href="#">
+                    <img class="media-object" src="http://placehold.it/64x64" alt="">
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading"><?php echo $comment->c_author ?>
+                    <small>August 25, 2014 at 9:30 PM</small>
+                </h4>
+                <?php echo $comment->c_body; ?>
+            </div>
+        </div>
+    <?php endforeach; ?> 
 
 
 
 </div>
-<div class="container">
-    <!-- Blog Sidebar Widgets Column -->
-<!--     <div class="col-md-4"> -->
 
-        
-       <?php //include_once("includes/sidebar.php"); ?>
-
-
-<!--    </div> -->
-   <!-- /.row -->
 
 </div>
 
-</div>
-
-   <?php include_once("includes/footer.php"); ?>
+<?php include_once("includes/footer.php"); ?>

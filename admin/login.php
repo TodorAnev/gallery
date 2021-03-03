@@ -23,42 +23,42 @@ if(isset($_POST['submit'])){
 
 
 
- ?>
+?>
 
 
 <div class="col-md-4 col-md-offset-3">
 
-<h4 class="bg-danger"><?php echo $message; ?></h4>
+	<h4 class="bg-danger"><?php echo $message; ?></h4>
 	
-<form id="login-id" action="" method="post">
-	
-<div class="form-group">
-	<label for="username" class="login">Username</label>
-	<input type="text" class="form-control" name="u_username" value="<?php echo htmlentities($u_username); ?>" >
-	<!-- htmlentities is used to encode user input on a website so that users cannot insert harmful HTML codes into a site -->
+	<form id="login-id" action="" method="post">
+		
+		<div class="form-group">
+			<label for="username" class="login">Username</label>
+			<input type="text" class="form-control" name="u_username" value="<?php echo htmlentities($u_username); ?>" >
+			<!-- htmlentities is used to encode user input on a website so that users cannot insert harmful HTML codes into a site -->
+
+		</div>
+
+		<div class="form-group">
+			<label for="password" class="login">Password</label>
+			<input type="password" class="form-control" name="u_password" value="<?php echo htmlentities($u_password); ?>">
+			
+		</div>
+
+
+		<div class="form-group">
+			<input type="submit" name="submit" value="Submit" class="btn btn-primary">
+
+		</div>
+
+
+	</form>
+
 
 </div>
 
-<div class="form-group">
-	<label for="password" class="login">Password</label>
-	<input type="password" class="form-control" name="u_password" value="<?php echo htmlentities($u_password); ?>">
-	
 </div>
 
 
-<div class="form-group">
-<input type="submit" name="submit" value="Submit" class="btn btn-primary">
-
-</div>
-
-
-</form>
-
-
-</div>
-
-</div>
-
-	
 </body>
 </html>

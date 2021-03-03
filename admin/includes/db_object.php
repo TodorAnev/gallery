@@ -100,7 +100,7 @@ class Db_object
 		$properties_pairs[] = "{$key}='{$value}'";
 	}
 	$sql = "UPDATE " .static::$db_table. " SET ";
-	$sql .= implode(", ", $properties_pairs); // final result:Array ( [0] => u_username='Pesho' [1] => u_password='gesho' [2] => f_name='mesho' [3] => l_name='bakshesho' ) from this:
+	$sql .= implode(", ", $properties_pairs); // final result:Array ( [0] => u_username='admin' [1] => u_password='admin' [2] => f_name='admin' [3] => l_name='admin' ) from this:
 	//$sql .= "u_username= '" . $database->escape_string($this->u_username) . "', ";
 	$sql .= " WHERE id= " . $database->escape_string($this->id);
 	$database->query($sql);
