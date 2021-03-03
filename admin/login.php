@@ -1,5 +1,5 @@
 <?php 
-// require_once("includes/init.php");
+require_once("includes/init.php");
 require_once("includes/header.php"); 
 if($session->is_signed_in()){
 	redirect("index.php");
@@ -33,14 +33,14 @@ if(isset($_POST['submit'])){
 <form id="login-id" action="" method="post">
 	
 <div class="form-group">
-	<label for="username">Username</label>
+	<label for="username" class="login">Username</label>
 	<input type="text" class="form-control" name="u_username" value="<?php echo htmlentities($u_username); ?>" >
 	<!-- htmlentities is used to encode user input on a website so that users cannot insert harmful HTML codes into a site -->
 
 </div>
 
 <div class="form-group">
-	<label for="password">Password</label>
+	<label for="password" class="login">Password</label>
 	<input type="password" class="form-control" name="u_password" value="<?php echo htmlentities($u_password); ?>">
 	
 </div>
@@ -56,3 +56,9 @@ if(isset($_POST['submit'])){
 
 
 </div>
+
+</div>
+
+	
+</body>
+</html>
