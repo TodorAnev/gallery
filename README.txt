@@ -1,5 +1,6 @@
 Bootstrap OOP PHP Gallery 
 
+Database is in db folder
 Object oriented gallery system with admin page.
 Home Page with pagination and single post review with the possibility to type comments.
 Upload Post in admin page has verifications that are associated with file upload.
