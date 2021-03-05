@@ -1,4 +1,4 @@
-OOP PHP Gallery 
+Bootstrap OOP PHP Gallery 
 
 Object oriented gallery system with admin page.
 Home Page with pagination and single post review with the possibility to type comments.
