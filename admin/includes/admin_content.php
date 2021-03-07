@@ -7,6 +7,8 @@
                 Admin
                 <small>Dashboard</small>
             </h1>
+<?php $session->count=$_SESSION['count']; 
+//if we do not declare count breaks?>
 
 <div class="row">
     <div class="col-lg-3 col-md-6">
@@ -18,7 +20,7 @@
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge"><?php echo $session->count; ?></div>
-                        <div>New Views</div>
+                        <div>Post Views</div>
                     </div>
                 </div>
             </div>

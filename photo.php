@@ -1,12 +1,11 @@
 <?php 
 require_once("includes/header.php");
-require_once("admin/includes/init.php");
 
 if(empty($_GET['id'])){
     redirect("index.php");
 }
 $photo = Photo::find_by_id($_GET['id']);
-
+$session->post_views();
 
 if(isset($_POST['submit'])){
     $c_author = trim($_POST['c_author']); //remove the spaces that come from the form

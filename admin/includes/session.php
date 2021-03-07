@@ -15,10 +15,9 @@ class Session
 	{
 		session_start();
 		$this->check_login();
-		$this->visitor_count();
 	}
 
-	public function visitor_count(){
+	public function post_views(){
 		if(isset($_SESSION['count'])){
 			return $this->count = $_SESSION['count']++;
 		} else {
