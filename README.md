@@ -6,7 +6,7 @@
 - Upload Post in admin page has verifications that are associated with file upload
 - Single post comments in all posts page
 - All post comments in comments tab
-- Pictures, for uploading, included in project(car_pictures folder)
+- Pictures, for uploading, included in project (car_pictures folder)
 
 ## User Data
 
